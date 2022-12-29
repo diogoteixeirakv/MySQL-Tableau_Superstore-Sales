@@ -6,22 +6,23 @@
 
 
 -- A) SIMPLE TRENDS
--- to "Technology" category.
+-- To "Technology" category.
+-- Period-over-Period Comparisons: day-over-day (DoD), month-over-month (MoM), and Year-over-year (YoY). 
 
--- by day
+-- DoD
 SELECT orderdate, sales
 FROM superstore
 WHERE category="technology"
 ORDER BY 1
 
--- by month
+-- MoM
 SELECT date_format(orderdate,'%y-%m') as month_date, round(sum(sales)) as sales 
 FROM superstore
 WHERE category = 'technology'
 GROUP BY 1
 ORDER BY 1
 
---  by year
+-- YoY
 SELECT year(orderdate) as year_date, round(sum(sales)) as sales 
 FROM superstore
 WHERE category = 'technology'
@@ -72,25 +73,25 @@ FROM
 
 
 -- B) COMPARING TRENDS
--- to "Technology" and "Furniture" categories.
+-- To "Technology" and "Furniture" categories.
 
 
--- Period-over-Period Comparisons: Year-over-year (YoY) and month-over-month (MoM)
--- Let’s compare the Yearly and Monthly sales trend for the following categories: Technology, Furniture, and Office supplies.
+-- Compare the MoM and YoY sales trend for the following categories: Technology, Furniture, and Office supplies.
 
--- a) YoY
+-- a) MoM (ranking by No. of Sales for each month) 
+SELECT date_format(orderdate,'%y-%m') as month_date, category, round(sum(sales)) as sales
+    ,dense_rank() OVER (PARTITION BY date_format(orderdate,'%Y-%b') ORDER BY round(sum(sales)) DESC) AS dense_rank_num
+FROM superstore
+GROUP BY 1,2
+ORDER BY 1,3 desc
+
+-- b) YoY
 SELECT year(orderdate) as year, category, round(sum(sales)) as sales 
 FROM superstore
 WHERE category in ('technology','furniture','office supplies')
 GROUP BY 1,2
 ORDER BY 1,2
 
--- b) MoM (ranking by No. of Sales) 
-SELECT date_format(orderdate,'%y-%m') as month_date, category, round(sum(sales)) as sales
-    ,dense_rank() OVER (PARTITION BY date_format(orderdate,'%Y-%b') ORDER BY round(sum(sales)) DESC) AS dense_rank_num
-FROM superstore
-GROUP BY 1,2
-ORDER BY 1,3 desc
 
 
 -- Calculate the GAP between the two categories: Technology and Furniture
