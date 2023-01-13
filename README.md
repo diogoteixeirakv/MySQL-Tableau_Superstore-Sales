@@ -12,7 +12,10 @@ Compilation of MySQL - Tableau  project for Data Analytics and Data Visualizatio
 
 ## Projects
 **MySQL for Data Analysis**: data analysis and data visualizations for answering business related questions for management:
-+ What are the monthly sales by vending machine?
-+ What is the most profitable vending machine?
-+ What are the most relevant product category in the different machines?
-+ What are the top 5 prefered consumers products by category, in each machine?
++ What are the total Sales by State?
++ What are the top 3 States with the highest Sales amount?
++ What are the bottom 3 States with the lowest Sales amount?
++ Which Postal Codes register more Sales in the different Sates and Cities?
++ Which Postal Codes register less Sales in the different Sates and Cities? 
++ What are the Sales values for each Region?
++ In those different Regions, what are the Sales amount by Product Segment?
