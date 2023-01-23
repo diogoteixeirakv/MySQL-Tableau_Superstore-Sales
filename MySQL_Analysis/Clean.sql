@@ -1,18 +1,18 @@
 -- OVERLOOK --
 use store
 
-select count(*)
-from superstore
+SELECT count(*)
+FROM superstore
 
-select *
-from superstore
-order by orderdate, orderid
+SELECT *
+FROM superstore
+ORDER BY orderdate, orderid
 
 describe superstore
 
 -- Date Range: 2014-01-04 to 2017-12-30
-select min(orderdate), max(orderdate)
-from superstore
+SELECT min(orderdate), max(orderdate)
+FROM superstore
 
 -- RENAME COLUMNS -- 
 ALTER TABLE superstore
@@ -40,25 +40,25 @@ RENAME COLUMN `Product Name` TO ProductName
 
 
 -- FORMAT ORDERDATE --
-select orderdate
-from superstore
-order by orderdate 
+SELECT orderdate
+FROM superstore
+ORDER BY orderdate 
 
 UPDATE superstore
 SET orderdate = REPLACE(orderdate, '/', '-')
 
 SELECT orderid, STR_TO_DATE(OrderDate, '%e-%c-%Y') AS OrderDate1
-from superstore
+FROM superstore
 
-update superstore
-set OrderDate=STR_TO_DATE(OrderDate, '%m-%d-%Y')
+UPDATE superstore
+SET OrderDate=STR_TO_DATE(OrderDate, '%m-%d-%Y')
 
 
 -- NULLS CHECK --
 -- No nulls
-select *
-from superstore
-where 
+SELECT *
+FROM superstore
+WHERE 
 	rowid is null or
     orderid is null or
     orderdate is null or
@@ -86,13 +86,13 @@ where
 SELECT orderid, count(*) as records
 FROM superstore
 GROUP BY orderid
-HAVING count(*) > 1
+HAVING COUNT(*) > 1
 
 -- Deduplicate
 SELECT distinct a.orderid, a.customername, a.orderdate, a.customerid, a.customername, a.sales, count(*) as records
 FROM superstore a
 JOIN superstore b on a.orderid = b.orderid
-group by orderid
-having count(*)>1
-order by orderdate
+GROUP BY orderid
+HAVING COUNT(*)>1
+ORDER BY orderdate
 
