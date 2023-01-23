@@ -11,7 +11,7 @@ Compilation of MySQL - Tableau  project for Data Analytics and Data Visualizatio
 ![tableau](https://user-images.githubusercontent.com/119432505/212401369-cc22368c-ae29-4a1d-802c-34b80bf62edb.png)
 
 ## Projects
-**MySQL for Data Analysis**: data analysis and data visualizations for answering business related questions for management:
+**MySQL for Data Analysis - Data analysis and data visualizations for answering business related questions for management:**
 + What are the total Sales by State?
 + What are the top 3 States with the highest Sales amount?
 + What are the bottom 3 States with the lowest Sales amount?
