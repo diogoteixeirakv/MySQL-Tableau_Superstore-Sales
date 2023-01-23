@@ -1,46 +1,54 @@
--- PIVOT: total sales per customer name. --
-SELECT customerid, customername, round(sum(sales)) as total_sales, count(*) as records
+-- PIVOT: Total sales per customer name --
+SELECT customerid
+      ,customername
+      ,round(sum(sales)) as total_sales
+      ,count(*) as records
 FROM superstore
 GROUP BY customername
 order by customername
 
 
--- PIVOT: total sales per segment. --
-select segment, round(sum(sales)) as total_sales, count(*) as records
-from superstore
-group by segment
+-- PIVOT: Total sales per segment --
+SELECT segment
+      ,round(sum(sales)) as total_sales
+      ,count(*) as records
+FROM superstore
+GROUP BY segment
 
 
 -- Total sales
-select round(sum(sales)) as total_sales
-from superstore
+SELECT round(sum(sales)) as total_sales
+FROM superstore
 
--- PIVOT: total sales per city. --
-select city, round(sum(sales)) as total_sales
-from superstore
-group by 1
-order by total_sales desc
+-- PIVOT: Total sales per city --
+SELECT city
+      ,round(sum(sales)) as total_sales
+FROM superstore
+GROUP BY 1
+ORDER BY total_sales desc
 
--- PIVOT: total sales per state. --
-select state, round(sum(sales)) as total_sales
-from superstore
-group by 1
-order by total_sales desc
+-- PIVOT: Total sales per state --
+SELECT state
+       ,round(sum(sales)) as total_sales
+FROM superstore
+GROUP BY 1
+ORDER BY total_sales desc
 
--- PIVOT: total sales per category. --
-select category, round(sum(sales)) as total_sales
-from superstore
-group by 1
-order by total_sales desc
+-- PIVOT: Total sales per category --
+SELECT category
+      ,round(sum(sales)) as total_sales
+FROM superstore
+GROUP BY 1
+ORDER BY total_sales desc
 
--- PIVOT: total sales per subcategory. --
-select subcategory, round(sum(sales)) as total_sales
-from superstore
-group by 1
-order by total_sales desc
+-- PIVOT: Total sales per subcategory --
+SELECT subcategory, round(sum(sales)) as total_sales
+FROM superstore
+GROUP BY 1
+ORDER BY total_sales desc
 
--- PIVOT: total sales per productname. --
-select productname, round(sum(sales)) as total_sales
-from superstore
-group by 1
-order by total_sales desc
+-- PIVOT: Total sales per productname --
+SELECT productname, round(sum(sales)) as total_sales
+FROM superstore
+GROUP BY 1
+ORDER BY total_sales desc
